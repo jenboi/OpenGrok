@@ -395,6 +395,7 @@ function togglediffs() {
 
 function selectAllProjects() {
     $("#project *").attr("selected", "selected");
+      $("#allProjects").val("true");
 }
 
 function invertAllProjects() {
@@ -407,6 +408,7 @@ function invertAllProjects() {
             }
         }
     );
+    $("#allProjects").val("false");
 }
 
 function goFirstProject() {
@@ -436,6 +438,25 @@ function checkEnter(event) {
     {
         goFirstProject();
     } else if (event.keyCode == '13') {
+        if (notSelected == 0) {
+            $("select").val([]);
+            $("#allProjects").val("true");
+        } else {
+            //activ choise to select projects
+            $("#allProjects").val("false");
+        }
         $("#sbox").submit();
     }
+}
+
+function checkBeforeSubmit() {
+    var notSelected = $("#project option:not(:selected)").length;
+    if (notSelected == 0) {
+        $("select").val([]);
+        $("#allProjects").val("true");
+    } else {
+        //activ choise to select projects
+        $("#allProjects").val("false");
+    }
+    $("#sbox").submit();
 }

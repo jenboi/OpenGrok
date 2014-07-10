@@ -50,6 +50,9 @@ public class QueryBuilder {
     public static final String PATH = "path";
     public static final String HIST = "hist";
     public static final String TYPE = "type";
+    
+    public static final String ALLPROJECTS = "allProjects"; 
+    
     /**
      * Fields we use in lucene internal ones
      */
@@ -179,6 +182,25 @@ public class QueryBuilder {
      */
     public String getType() {
         return getQueryText(TYPE);
+    }
+    
+        /**
+     * Set search string for the "type" field.
+     *
+     * @param type query string to set
+     * @return this instance
+     */
+    public QueryBuilder setAllProjects(String allProjects) {
+        return addQueryText(ALLPROJECTS, allProjects);
+    }
+
+    /**
+     * Get search string for the "type" field.
+     *
+     * @return {@code null} if not set, the query string otherwise.
+     */
+    public String getAllProjects() {
+        return getQueryText(ALLPROJECTS);
     }
 
     /**

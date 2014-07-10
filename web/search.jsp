@@ -47,9 +47,22 @@ include file="projects.jspf"
             Util.appendQuery(url, "hist", qb.getHist());
             Util.appendQuery(url, "type", qb.getType());
         }
-        if (sh.projects != null && sh.projects.size() != 0) {
-            Util.appendQuery(url, "project", cfg.getRequestedProjectsAsString());
+        
+        //TODO: QueryBuilder is not working for this... quick fix here... but should be in QueryBuilder
+        boolean isAllProjects = cfg.isRequestForAllProjects();
+        if (isAllProjects) {
+            Util.appendQuery(url, "allProjects", "true");
+        } else {
+            
+            if (sh.projects != null && sh.projects.size() != 0) {
+                Util.appendQuery(url, "allProjects", "false");
+                Util.appendQuery(url, "project", cfg.getRequestedProjectsAsString());
+            } else {
+                Util.appendQuery(url, "allProjects", "true");
+            }
         }
+   
+        
         return url;
     }
 %><%
