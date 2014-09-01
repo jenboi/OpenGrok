@@ -271,7 +271,7 @@ Copyright (c) 2005, 2011, Oracle and/or its affiliates. All rights reserved.
     </target>
 
     <property name="coverage.dir" value="${basedir}/coverage"/>
-    <target name="-pre-compile" depends="jrcs,jflex,download-lucene"/>
+    <target name="-pre-compile" depends="jrcs,jflex,download-lucene,download-ant"/>
 	<target name="eclipse" depends="-pre-compile"
 		description="satisfy eclipse dependencies"/>
     <target name="-post-clean">
@@ -332,7 +332,6 @@ Copyright (c) 2005, 2011, Oracle and/or its affiliates. All rights reserved.
       -->
     <target name="-copy-lib-without-netbeans"
             unless="manifest.available+main.class+mkdist.available">
-        <get src="${mvn.repository}/org/apache/ant/ant/1.9.4/ant-1.9.4.jar" dest="lib/ant.jar" verbose="true" usetimestamp="true"/>
         <copy todir="${dist.dir}">
             <fileset dir="." includes="${opengrok.lib.files}"/>
         </copy>
@@ -377,6 +376,10 @@ Copyright (c) 2005, 2011, Oracle and/or its affiliates. All rights reserved.
         dest="lib/${lucene-queryparser.jar}" verbose="true" usetimestamp="true"/>
         <get src="${mvn.repository}/org/apache/lucene/lucene-suggest/${lucene.version}/${lucene-suggest.jar}"
         dest="lib/${lucene-suggest.jar}" verbose="true" usetimestamp="true"/>
+    </target>
+
+    <target name="download-ant">
+        <get src="${mvn.repository}/org/apache/ant/ant/1.9.4/ant-1.9.4.jar" dest="lib/ant.jar" verbose="true" usetimestamp="true"/>
     </target>
 
     <target name="-post-jar" depends="-copy-lib-without-netbeans">
