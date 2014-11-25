@@ -2,6 +2,10 @@
 # Copyright (c) 2006, 2014, Oracle and/or its affiliates. All rights reserved.
 #
 
+This is a fork of https://github.com/OpenGrok/OpenGrok to to solve the issue 
+of searches that will cram everything into the request header, this will limit 
+the number of searchable projects.     
+
 
 OpenGrok - a wicked fast source browser
 ---------------------------------------

@@ -442,8 +442,8 @@ function checkEnter(event) {
             $("select").val([]);
             $("#allProjects").val("true");
         } else {
-            //activ choise to select projects
-            $("#allProjects").val("false");
+            //active choice to select projects            
+        	$("#allProjects").val("false");
         }
         $("#sbox").submit();
     }
@@ -455,7 +455,7 @@ function checkBeforeSubmit() {
         $("select").val([]);
         $("#allProjects").val("true");
     } else {
-        //activ choise to select projects
+        //active choice to select projects
         $("#allProjects").val("false");
     }
     $("#sbox").submit();
